@@ -31,6 +31,11 @@ class _GalleryButtonState extends State<GalleryButton> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: () async {

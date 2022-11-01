@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_text_ocr/home/home.dart';
-import 'package:flutter_text_ocr/result.dart';
+import 'package:flutter_text_ocr/result/result.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 
 class PreviewScreen extends StatelessWidget {
@@ -27,7 +27,12 @@ class PreviewScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
+                  ElevatedButton.icon(
+                    label: const Text('Discard'),
+                    icon: const Icon(
+                      Icons.close,
+                      size: 30,
+                    ),
                     onPressed: () {
                       Navigator.pushAndRemoveUntil(
                           context,
@@ -39,19 +44,6 @@ class PreviewScreen extends StatelessWidget {
                         shape: const StadiumBorder(),
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Icon(
-                          Icons.close,
-                          size: 30,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Text('Discard'),
-                        )
-                      ],
-                    ),
                   ),
                   const SizedBox(
                     width: 25,
