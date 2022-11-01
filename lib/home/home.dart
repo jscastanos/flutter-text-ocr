@@ -6,8 +6,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Row(
+    return Scaffold(
+        body: SafeArea(
+            child: Center(
+                child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Column(
@@ -18,15 +20,14 @@ class HomeScreen extends StatelessWidget {
               'assets/logo.png',
               height: 250,
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             const CameraButton(),
+            const SizedBox(height: 15),
             const GalleryButton()
           ],
         )
       ],
-    ));
+    ))));
   }
 }
 
@@ -40,21 +41,16 @@ class GalleryButton extends StatefulWidget {
 class _GalleryButtonState extends State<GalleryButton> {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return ElevatedButton.icon(
       onPressed: () {},
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          Icon(
-            Icons.photo_library,
-            size: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: Text('Gallery'),
-          )
-        ],
+      icon: const Icon(
+        Icons.photo_library,
+        size: 30,
       ),
+      label: const Text('Gallery'),
+      style: ElevatedButton.styleFrom(
+          shape: const StadiumBorder(),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
     );
   }
 }

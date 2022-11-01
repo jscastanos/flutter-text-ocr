@@ -12,24 +12,19 @@ class CameraButton extends StatefulWidget {
 class _CameraButtonState extends State<CameraButton> {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return ElevatedButton.icon(
       onPressed: () async {
         await availableCameras().then((cameras) => Navigator.push(context,
             MaterialPageRoute(builder: (_) => Camera(cameras: cameras))));
       },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          Icon(
-            Icons.photo_camera,
-            size: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: Text('Camera'),
-          )
-        ],
+      icon: const Icon(
+        Icons.photo_camera,
+        size: 30,
       ),
+      label: const Text('Camera'),
+      style: ElevatedButton.styleFrom(
+          shape: const StadiumBorder(),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
     );
   }
 }
@@ -83,11 +78,12 @@ class _CameraState extends State<Camera> {
     try {
       await _cameraController.setFlashMode(FlashMode.off);
       XFile picture = await _cameraController.takePicture();
+
       if (!mounted) return;
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => PreviewScreen(picture: picture)));
+              builder: (context) => PreviewScreen(file: picture)));
     } on CameraException catch (e) {
       debugPrint('Error occured while taking picture $e');
       return null;
