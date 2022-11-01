@@ -1,4 +1,4 @@
-# flutter_ml
+# flutter_text_ocr
 
 A new Flutter project.
 

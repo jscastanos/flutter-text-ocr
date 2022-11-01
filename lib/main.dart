@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ml/home.dart';
+import 'package:flutter_text_ocr/home/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +11,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
         title: 'Text OCR',
         home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Text OCR'),
-          ),
-          body: const HomeScreen(),
+          body: HomeScreen(),
         ));
   }
 }

@@ -1,4 +1,4 @@
-package com.example.flutter_ml
+package com.example.flutter_text_ocr
 
 import io.flutter.embedding.android.FlutterActivity
 

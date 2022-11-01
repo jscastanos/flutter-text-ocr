@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_text_ocr/home/camera.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,39 +13,20 @@ class HomeScreen extends StatelessWidget {
         Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [CameraButton(), GalleryButton()],
+          children: [
+            Image.asset(
+              'assets/logo.png',
+              height: 250,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const CameraButton(),
+            const GalleryButton()
+          ],
         )
       ],
     ));
-  }
-}
-
-class CameraButton extends StatefulWidget {
-  const CameraButton({super.key});
-
-  @override
-  State<CameraButton> createState() => _CameraButtonState();
-}
-
-class _CameraButtonState extends State<CameraButton> {
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          Icon(
-            Icons.photo_camera,
-            size: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: Text('Camera'),
-          )
-        ],
-      ),
-    );
   }
 }
 
@@ -65,7 +47,7 @@ class _GalleryButtonState extends State<GalleryButton> {
         children: const [
           Icon(
             Icons.photo_library,
-            size: 20,
+            size: 30,
           ),
           Padding(
             padding: EdgeInsets.only(left: 10),
