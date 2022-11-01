@@ -113,8 +113,8 @@ class _OCRButtonState extends State<OCRButton> {
     return ElevatedButton.icon(
       icon: _isBusy
           ? const SizedBox(
-              width: 16,
-              height: 16,
+              width: 30,
+              height: 30,
               child: CircularProgressIndicator(
                 color: Colors.white,
                 strokeWidth: 1.5,

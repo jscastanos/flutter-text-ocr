@@ -48,6 +48,8 @@
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
 		<key>NSCameraUsageDescription</key>
-		<string>Explanation on why the camera access is needed.</string>
+		<string>Need to access camera to capture an image.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Need to access gallery to select an image.</string>
 	</dict>
 </plist>
