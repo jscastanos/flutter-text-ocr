@@ -21,10 +21,12 @@ class HomeScreen extends StatelessWidget {
               'assets/logo.png',
               height: 250,
             ),
-            const SizedBox(height: 20),
-            const CameraButton(),
-            const SizedBox(height: 15),
-            const GalleryButton()
+            const Padding(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                child: CameraButton()),
+            const Padding(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                child: GalleryButton()),
           ],
         )
       ],

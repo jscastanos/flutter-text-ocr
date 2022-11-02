@@ -48,22 +48,25 @@ class _ResultScreenState extends State<ResultScreen> {
                 ),
               ),
             ),
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CopyText(text: widget.text),
-                    const SizedBox(
-                      width: 25,
-                    ),
-                    const SaveText()
-                  ],
-                ),
-                const SizedBox(
-                  height: 50,
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 50),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: CopyText(text: widget.text),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: SaveText(text: widget.text),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             )
           ],
         )));

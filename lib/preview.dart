@@ -22,39 +22,42 @@ class PreviewScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.65,
             child: Image.file(File(file.path), fit: BoxFit.fill),
           ),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton.icon(
-                    label: const Text('Discard'),
-                    icon: const Icon(
-                      Icons.close,
-                      size: 30,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: ElevatedButton.icon(
+                        label: const Text('Discard'),
+                        icon: const Icon(
+                          Icons.close,
+                          size: 30,
+                        ),
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()),
+                              (route) => false);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            shape: const StadiumBorder(),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10)),
+                      ),
                     ),
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()),
-                          (route) => false);
-                    },
-                    style: ElevatedButton.styleFrom(
-                        shape: const StadiumBorder(),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10)),
-                  ),
-                  const SizedBox(
-                    width: 25,
-                  ),
-                  OCRButton(file: file)
-                ],
-              ),
-              const SizedBox(
-                height: 50,
-              )
-            ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: OCRButton(file: file),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
