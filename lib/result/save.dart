@@ -13,12 +13,11 @@ class SaveText extends StatefulWidget {
 }
 
 class _SaveTextState extends State<SaveText> {
-  bool _isSaving = false;
   String fileName = '';
 
   String getNow() {
     DateTime now = DateTime.now();
-    DateFormat formatter = DateFormat('yyyy-MM-dd');
+    DateFormat formatter = DateFormat('yyyy-MM-dd hh:mm:ss');
     String formattedDate = formatter.format(now);
 
     return formattedDate;
@@ -44,34 +43,18 @@ class _SaveTextState extends State<SaveText> {
   }
 
   Future<void> saveFile() async {
-    setState(() {
-      _isSaving = true;
-    });
-
     File file = File(await getFilePath());
     file.writeAsString(widget.text);
-
-    setState(() {
-      _isSaving = false;
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      icon: _isSaving
-          ? const SizedBox(
-              width: 30,
-              height: 30,
-              child: CircularProgressIndicator(
-                color: Colors.white,
-                strokeWidth: 1.5,
-              ))
-          : const Icon(
-              Icons.save_as,
-              size: 30,
-            ),
-      label: Text(_isSaving ? 'Processing' : 'Save'),
+      icon: const Icon(
+        Icons.save_as,
+        size: 30,
+      ),
+      label: const Text('Save'),
       onPressed: () async {
         await saveFile();
         if (!mounted) return;
@@ -79,7 +62,6 @@ class _SaveTextState extends State<SaveText> {
             SnackBar(content: Text('$fileName is saved successfully')));
       },
       style: ElevatedButton.styleFrom(
-          backgroundColor: _isSaving ? Colors.grey : Colors.blue,
           shape: const StadiumBorder(),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
     );
