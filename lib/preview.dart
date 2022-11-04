@@ -129,7 +129,8 @@ class _OCRButtonState extends State<OCRButton> {
           (result) => Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => ResultScreen(text: result))),
+                  builder: (context) =>
+                      ResultScreen(text: result, file: widget.file))),
         );
       },
     );

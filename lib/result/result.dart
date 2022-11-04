@@ -1,12 +1,13 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_text_ocr/preview.dart';
 import 'package:flutter_text_ocr/result/copy.dart';
 import 'package:flutter_text_ocr/result/save.dart';
 
-import '../home/home.dart';
-
 class ResultScreen extends StatefulWidget {
-  const ResultScreen({super.key, required this.text});
+  const ResultScreen({super.key, required this.text, required this.file});
   final String text;
+  final XFile file;
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -25,7 +26,8 @@ class _ResultScreenState extends State<ResultScreen> {
             onPressed: () {
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => PreviewScreen(file: widget.file)),
                   (route) => false);
             },
           ),
