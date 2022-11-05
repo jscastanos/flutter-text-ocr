@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_text_ocr/home/home.dart';
 import 'package:flutter_text_ocr/preview.dart';
 import 'package:flutter_text_ocr/result/copy.dart';
 import 'package:flutter_text_ocr/result/save.dart';
@@ -20,7 +21,7 @@ class _ResultScreenState extends State<ResultScreen> {
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(
-              Icons.arrow_back,
+              Icons.chevron_left,
               size: 30,
             ),
             onPressed: () {
@@ -31,7 +32,21 @@ class _ResultScreenState extends State<ResultScreen> {
                   (route) => false);
             },
           ),
-          title: const Text("Back"),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                      (route) => false);
+                },
+                child: const Icon(Icons.home, size: 30),
+              ),
+            )
+          ],
         ),
         body: SafeArea(
             child: Column(
